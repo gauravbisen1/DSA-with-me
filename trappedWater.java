@@ -29,5 +29,4 @@ public class trappedWater{
         System.out.print(trappedWater(height));
     }
 }
-
-
+//edit
