@@ -1,1 +1,1 @@
-height
+System.out.println(n+" is prime!");
