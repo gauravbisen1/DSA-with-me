@@ -13,6 +13,7 @@ public class TwoD_array{
         System.out.println("Key not found!");
         return  false;
     }
+
     public static void main(String[] args) {
         int matrix [][] = new int [3][3];
         Scanner sc = new Scanner(System.in);
@@ -35,5 +36,6 @@ public class TwoD_array{
             System.out.println();
         }
         search(matrix, 5);
+        
     }
 }
