@@ -26,6 +26,7 @@ public class mergeSort{
         int j = mid+1; //iterator for right part
         int k = 0; //iterator for temp arr
 
+        //storing in temp arr
         while (i <= mid && j <= ei) {
             if (arr[i]<arr[j]) {
                 temp[k] = arr[i];
