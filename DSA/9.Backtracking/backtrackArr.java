@@ -9,7 +9,7 @@ public class backtrackArr{
         arr[i] = val;
         backtrackArr(arr, i+1, val+1);
         //backtrack
-        arr[i] = val - 2;
+        arr[i] = arr[i] - 2;
     }
     public static void printArr(int arr[]){
         for (int i = 0; i < arr.length; i++) {
