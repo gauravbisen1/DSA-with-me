@@ -11,10 +11,40 @@ public class LinkedList{
     public static Node head;
     public static Node tail;
 
+    //add first
+    public void addFirst(int data){
+        //step1 - create new node
+        Node newNode = new Node(data);
+        if (head == null) {
+            head = tail = null;
+            return;
+        }
+        //step2 - newNode.next = head;
+        newNode.next = head;
+        //step3 - head = newNode
+        head = newNode;
+    }
+
+    //add last
+    public void addLast(int data){
+        //step1 - create new node
+        Node newNode = new Node(data);
+        if (head == null) {
+            head = tail = newNode;
+            return;
+        }
+        //step2 - tail.next = newNode;
+        tail.next = newNode;
+        //step3 - tail = newNode
+        tail = newNode;
+    }
+
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
-
-        ll.head = new Node(1);
-        ll.head.next = new Node(2);
+        ll.addFirst(2);
+        ll.addFirst(1);
+        ll.addLast(3);
+        ll.addLast(4);
+        
     }
 }
