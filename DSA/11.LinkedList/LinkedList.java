@@ -119,6 +119,39 @@ public class LinkedList{
         return val;
     }
 
+    //serach - iterative
+    public int iterativeSerch(int key){
+        Node temp = head;
+        int i = 0;
+        while (temp != null) {
+            if (temp.data == key) {
+                return i;
+            }
+            temp = temp.next;
+            i++;
+        }
+        //key not found
+        return -1;
+    }
+
+    //search - recursive
+    public int helper(Node head , int key){
+        if (head == null) {
+            return -1;
+        }
+        if (head.data == key) {
+            return 0;
+        }
+        int idx = helper(head.next, key);
+        if (idx == -1) {
+            return -1;
+        }
+        return idx+1;
+    }
+    public int recursiveSearch(int key){
+        return helper(head, key);
+    }
+
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
     
@@ -127,10 +160,14 @@ public class LinkedList{
         ll.addLast(4);
         ll.addLast(5);
         ll.add(2, 3);
-        ll.removeFirst();
-        ll.removeLast();
+        // ll.removeFirst();
+        // ll.removeLast();
+
 
         ll.print();
         System.out.println(ll.size);
+
+        System.out.println("Iterative search - " + ll.iterativeSerch(3));
+        System.out.println("Recursive search - " + ll.iterativeSerch(4));
     }
 }
