@@ -167,25 +167,59 @@ public class LinkedList{
         head = prev;
     }
 
+    //find and remove nth node from last(iterative approch)
+    public void deleteNthFromEnd(int n){
+        //calculate size
+        int size = 0;
+        Node temp = head;
+        while (temp != null) {
+            temp = temp.next;
+            size++;
+        }
+        //if we want to remove head
+        if (n==size) {
+            head = head.next;
+            return;
+        }
+        //size - n
+        int i = 1;
+        int idxToFind = size - n;
+        Node prev = head;
+        while (i < idxToFind) {
+            prev = prev.next;
+            i++;
+        }
+        prev.next = prev.next.next;
+        return;
+    }
+
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
     
-        ll.addFirst(2);
-        ll.addFirst(1);
-        ll.addLast(4);
-        ll.addLast(5);
-        ll.add(2, 3);
+        // ll.addFirst(2);
+        // ll.addFirst(1);
+        // ll.addLast(4);
+        // ll.addLast(5);
+        // ll.add(2, 3);
         // ll.removeFirst();
         // ll.removeLast();
 
+        // System.out.println(ll.size);
 
+        // System.out.println("Iterative search - " + ll.iterativeSerch(3));
+        // System.out.println("Recursive search - " + ll.iterativeSerch(4));
+
+        // ll.reverse();
+        // ll.print();
+
+        ll.addLast(1);
+        ll.addLast(2);
+        ll.addLast(3);
+        ll.addLast(4);
+        ll.addLast(5);
         ll.print();
-        System.out.println(ll.size);
 
-        System.out.println("Iterative search - " + ll.iterativeSerch(3));
-        System.out.println("Recursive search - " + ll.iterativeSerch(4));
-
-        ll.reverse();
+        ll.deleteNthFromEnd(3);
         ll.print();
     }
 }
