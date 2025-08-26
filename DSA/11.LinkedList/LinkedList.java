@@ -193,6 +193,58 @@ public class LinkedList{
         return;
     }
 
+    //check if LL is palindrome or not
+
+    //find mid - slow fast approch
+    public Node findMid(Node head){
+        Node slow = head;
+        Node fast = head;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next; //+1
+            fast = fast.next.next; //+2
+        }
+        return slow; // slow is my mid noode
+    }
+
+    public boolean checkPlaindrome(){
+
+        //base/corner case
+        if (head == null || head.next == null) {
+            return true;
+        }
+
+        //step 1 - find mid
+        Node midNode = findMid(head);
+
+        //step 2 - reverse 2nd half
+        Node prev = null;
+        Node curr = midNode;
+        Node next;
+
+        while (curr != null) {
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+
+        //step 3 - check left half and right half
+        Node right = prev; //right half head
+        Node left = head; //left hald head
+
+        while (right != null) {
+            if (left.data != right.data) {
+                return false;
+            }
+            //if true update
+            left = left.next;
+            right = right.next;
+        }
+
+        return true;
+    }
+
     public static void main(String[] args) {
         LinkedList ll = new LinkedList();
     
@@ -214,12 +266,14 @@ public class LinkedList{
 
         ll.addLast(1);
         ll.addLast(2);
-        ll.addLast(3);
-        ll.addLast(4);
-        ll.addLast(5);
+        ll.addLast(2);
+        ll.addLast(1);
+        // ll.addLast(5);
         ll.print();
 
-        ll.deleteNthFromEnd(3);
+        // ll.deleteNthFromEnd(3);
+        
         ll.print();
+        System.out.println(ll.checkPlaindrome());
     }
 }
