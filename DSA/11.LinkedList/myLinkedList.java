@@ -2,7 +2,7 @@
 
 
 
-public class LinkedList{
+public class myLinkedList{
     public static class Node{
         int data;
         Node next;
@@ -395,7 +395,7 @@ public class LinkedList{
         // removeCycle();
         // System.out.println(isCycle());
 
-        LinkedList LL = new LinkedList();
+        myLinkedList LL = new myLinkedList();
         LL.addFirst(1);
         LL.addFirst(2);
         LL.addFirst(3);
