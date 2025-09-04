@@ -36,6 +36,18 @@ public class BinaryTreesQ {
         return leftCount + rightCount + 1;
     }
 
+    //sum of Nodes
+    public static int sum(Node root){
+        //base case
+        if (root == null) {
+            return 0;
+        }
+        int leftSum = sum(root.left);
+        int rightSum = sum(root.right);
+
+        return leftSum + rightSum + root.data;
+    }
+
 
     public static void main(String[] args) {
         Node root = new Node(1);
@@ -47,5 +59,6 @@ public class BinaryTreesQ {
 
         System.out.println("Height of a tree = " + height(root));
         System.out.println("Count of Nodes = " + count(root));
+        System.out.println("Sum of nodes = " + sum(root));
     }
 }
