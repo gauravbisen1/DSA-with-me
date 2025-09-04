@@ -24,7 +24,19 @@ public class BinaryTreesQ {
         return Math.max(lh, rh) + 1;
     }
 
-    
+    //count of Nodes
+    public static int count(Node root){
+        //base case
+        if (root == null) {
+            return 0;
+        }
+        int leftCount = count(root.left);
+        int rightCount = count(root.right);
+
+        return leftCount + rightCount + 1;
+    }
+
+
     public static void main(String[] args) {
         Node root = new Node(1);
         root.left = new Node(2);
@@ -32,8 +44,8 @@ public class BinaryTreesQ {
         root.left.left = new Node(4);
         root.left.right = new Node(5);
         root.right.left = new Node(6);
-        root.right.right = new Node(7);
 
         System.out.println("Height of a tree = " + height(root));
+        System.out.println("Count of Nodes = " + count(root));
     }
 }
