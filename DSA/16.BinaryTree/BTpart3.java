@@ -95,6 +95,91 @@ public class BTpart3 {
 
 // ------------------------------------------------------------------------------------------------
 
+    //min distance between nodes
+    public static int LCAdist(Node root, int n){
+        if (root == null) {
+            return -1;
+        }
+        if (root.data == n) {
+            return 0;
+        }
+        int leftDist = LCAdist(root.left, n);
+        int rightDist = LCAdist(root.right, n);
+
+        if (leftDist == -1 && rightDist == -1) {
+            return -1;
+        }
+        else if(leftDist == -1){
+            return  rightDist+1;
+        }else{
+            return  leftDist+1;
+        }
+    }
+    public static int minDist(Node root, int n1 , int n2){
+        Node Lca = LCA2(root, n1, n2);
+        int dist1 = LCAdist(Lca, n2);
+        int dist2 = LCAdist(Lca, n2);
+
+        return dist1 + dist2;
+    }
+
+// ------------------------------------------------------------------------------------------------
+
+    //kth ancestor of node
+    public static int kAncestor(Node root ,int n , int k){
+        if (root == null) {
+            return -1;
+        }
+        if (root.data == n) {
+            return 0;
+        }
+        int leftDist = kAncestor(root.left, n, k);
+        int rightDist = kAncestor(root.right, n, k);
+
+        if (leftDist == -1 && rightDist == -1) {
+            return -1;
+        }
+        int max = Math.max(leftDist, rightDist);
+        if (max + 1 == k) {
+            System.out.println(root.data);
+        }
+        return max+1;
+    }
+
+
+// ------------------------------------------------------------------------------------------------
+    //transfor to sum tree
+    public static int transform(Node root){
+        if (root == null) {
+            return 0;
+        }
+        int leftChild = transform(root.left);
+        int rightChild = transform(root.right);
+
+        int data = root.data;
+        int newLeft = root.left == null?0: root.left.data;
+        int newRight = root.right == null?0: root.right.data;
+
+        root.data = newLeft + leftChild + newRight + rightChild;
+
+        return data;
+
+    }
+
+    public static void preOrder(Node root){
+        if (root==null) {
+            return;
+        }
+        System.out.print(root.data + " ");
+        preOrder(root.left);
+        preOrder(root.right);
+    }
+
+
+// ------------------------------------------------------------------------------------------------
+
+
+
     public static void main(String[] args) {
         Node root = new Node(1);
         root.left = new Node(2);
@@ -110,7 +195,18 @@ public class BTpart3 {
         // int n1 = 4 , n2 = 5;
         // System.out.println(LCA(root, n1, n2).data);
 
-        int n1 = 4 , n2 = 7;
-        System.out.println(LCA2(root, n1, n2).data);
+        // int n1 = 4 , n2 = 7;
+        // System.out.println(LCA2(root, n1, n2).data);
+
+        // int n1 = 4 , n2 = 6;
+        // System.out.println(minDist(root, n1, n2));
+
+        // int n = 5 , k =2;
+        // kAncestor(root, n, k);
+
+        transform(root);
+        preOrder(root);
+
+
     }
 }
