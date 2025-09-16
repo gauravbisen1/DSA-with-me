@@ -1,6 +1,6 @@
 import java.util.PriorityQueue;
 
-public class heap {
+public class priorityQueue {
     static class Student implements Comparable<Student>{
         String name;
         int rank;
